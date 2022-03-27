@@ -63,8 +63,15 @@ def change_string(target_folder, old_string, new_string):
                     new_file.close()
             except UnicodeDecodeError:
                 pass
+            except PermissionError:
+                messagebox.showerror("Error", "Error: You do not have permission to modify this folder. If in the "
+                                              "target folder you have a git bash folder, this error is normal. "
+                                              "Remove the folder, restart the program then put the folder back.")
+                return False
         try:
             if old_string in folders:
                 os.rename(folders, folders.replace(old_string, new_string))
+                return True
         except PermissionError:
             messagebox.showerror("Error", "Error: The folder is opened in a file explorer. Close it and try again")
+            return False
