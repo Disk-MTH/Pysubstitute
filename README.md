@@ -57,7 +57,7 @@ one
 3) Run:
 
 To launch the application you simply need to run the "run.exe" file that you may have 
-seen in the "[scripts](https://github.com/Disk-MTH/Json-maker/tree/master/scripts)" folder.
+seen in the "[scripts](https://github.com/Disk-MTH/Pysubstitute/tree/master/scripts)" folder.
 
 4) Edit:
 
