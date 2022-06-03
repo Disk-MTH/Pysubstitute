@@ -67,11 +67,15 @@ def change_string(target_folder, old_string, new_string):
                 messagebox.showerror("Error", "Error: You do not have permission to modify this folder. If in the "
                                               "target folder you have a git bash folder, this error is normal. "
                                               "Remove the folder, restart the program then put the folder back.")
-                return False
-        try:
-            if old_string in folders:
-                os.rename(folders, folders.replace(old_string, new_string))
-                return True
-        except PermissionError:
-            messagebox.showerror("Error", "Error: The folder is opened in a file explorer. Close it and try again")
-            return False
+
+    for folders, subfolders, files in os.walk(target_folder):
+        for folder in folders:
+            try:
+                if old_string in folders:
+                    os.rename(folders, folders.replace(old_string, new_string))
+            except FileNotFoundError:
+                pass
+            except PermissionError:
+                messagebox.showerror("Error", "Error: The folder is opened in a file explorer. Close it and try again")
+
+    messagebox.showinfo("Finish", "Finish!")
